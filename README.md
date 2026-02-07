@@ -1,32 +1,26 @@
 # Task Acceptance & Slot Logic API
 
-This project implements the Task Acceptance & Slot Logic as part of an internship assignment.
-The goal is to ensure that tasks with limited slots cannot be over-accepted.
-
----
+This project implements Task 8 from the internship assignment.
+I focused on backend validation to prevent over-acceptance of tasks with limited slots.
 
 ## Tech Stack
 - Python
 - Flask
-- In-memory data storage
-
----
-
-## Problem Statement
-Each task has a limited number of available slots.
-A user can accept a task only if slots are available.
-Once slots reach zero, further acceptance is blocked.
-
----
 
 ## API Endpoint
-
-### Accept Task
 POST /tasks/<task_id>/accept
 
-#### Success Response
-```json
-{
-  "message": "Task accepted successfully",
-  "remaining_slots": 1
-}
+## Logic
+- Check if the task exists
+- Validate available slots
+- Reduce slot count on acceptance
+- Block acceptance when slots reach zero
+
+This ensures data integrity in task-based systems.
+
+## Running the Project
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install flask
+python app.py
